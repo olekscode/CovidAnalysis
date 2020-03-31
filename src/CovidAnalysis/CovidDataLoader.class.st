@@ -6,7 +6,7 @@ Class {
 
 { #category : #'accessing-path' }
 CovidDataLoader >> dataCsvFile [
-	^ self dataDirectory / 'covidData.csv'
+	^ self dataDirectory ensureCreateDirectory / 'covidData.csv'
 ]
 
 { #category : #'accessing-path' }
