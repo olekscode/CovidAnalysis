@@ -20,3 +20,7 @@ dataLoader := CovidDataLoader new.
 dataLoader downloadLatestData.
 covidData := dataLoader loadData.
 ```
+
+![DataFrame of COVID-19 data](img/covidData.png)
+
+![DataFrame of COVID-19 data for France](img/covidDataFrance.png)
