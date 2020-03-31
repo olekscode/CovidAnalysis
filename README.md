@@ -1,4 +1,4 @@
-# CovidAnalysis
+# COVID-19 Analysis
 
 ## How to install it?
 
