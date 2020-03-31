@@ -56,8 +56,11 @@ CovidDataLoader >> parseDateAndNumberColumnsOf: aCovidDataFrame [
 			Date readFrom: each pattern: 'dd/mm/yyyy' ].
 
 	aCovidDataFrame
-		toColumns: #(cases deaths)
-		applyElementwise: [ :each | each asInteger ].
+		toColumns: #(cases deaths population)
+		applyElementwise: [ :each |
+			each
+				ifNil: [ nil ]
+				ifNotNil: [ each asInteger ] ].
 ]
 
 { #category : #'data preprocessing' }
