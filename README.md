@@ -37,6 +37,21 @@ The result will be a data frame that looks like this:
 
 ![DataFrame of COVID-19 data](img/covidData.png)
 
+### Example of Data Analysis
 
+Let's get the historical data of how COVID-19 was spreading in France:
+
+```Smalltalk
+covidDataFrance := covidData select: [ :row |
+	(row at: 'country') = 'France' ].
+```
+
+Every row of this new data frame will have the same values in columns **country** and **population**. So we can remove those columns. But first, let's save the population of France in a separate variable, in case we need it later:
+
+```Smalltalk
+populationOfFrance := (covidDataFrance column: 'population') anyOne.
+
+covidDataFrance removeColumns: #(country population).
+```
 
 ![DataFrame of COVID-19 data for France](img/covidDataFrance.png)
