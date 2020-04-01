@@ -72,6 +72,20 @@ We get the following data frame:
 
 ![DataFrame of COVID-19 data for France](img/covidDataFrance.png)
 
+We can find the days on which there were the most reported cases and the most deaths in France:
+
+```Smalltalk
+maxDailyCases := (covidDataFrance column: 'cases') max. "4611"
+maxDailyDeaths := (covidDataFrance column: 'deaths') max. "418"
+
+covidDataFrance detect: [ :row | (row at: 'cases') = maxDailyCases ].
+covidDataFrance detect: [ :row | (row at: 'deaths') = maxDailyDeaths ].
+```
+
+![Days with most reported cases and deaths](img/maxDailyCasesAndDeaths.png)
+
+We can see that so far March 29 had the most reported cases - 4,611, and today, on March 31 there were the most deaths - 418 people died today in France.
+
 Let's add two more columns: cumulative sum of cases and deaths. Cumulative sum tells us the total number of cases reported until the given date. For example, if there were 5 cases reported on Monday, no cases on Tuesday, and 12 cases on Wednesday, then the cumulative sum for those days will be 5 for Monday, 5 for Tuesday (5 + 0), and 17 for Wednesday (5 + 0 + 12).
 
 ```Smalltalk
