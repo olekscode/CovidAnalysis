@@ -55,3 +55,20 @@ covidDataFrance removeColumns: #(country population).
 ```
 
 ![DataFrame of COVID-19 data for France](img/covidDataFrance.png)
+
+Let's add two more columns: cumulative sum of cases and deaths. Cumulative sum tells us the total number of cases reported until the given date. For example, if there were 5 cases reported on Monday, no cases on Tuesday, and 12 cases on Wednesday, then the cumulative sum for those days will be 5 for Monday, 5 for Tuesday (5 + 0), and 17 for Wednesday (5 + 0 + 12).
+
+```Smalltalk
+cumulativeSum := [ :column |
+	sum := 0.
+	column collect: [ :each |
+		sum := sum + each.
+		sum ] ].
+
+cumulativeCases := cumulativeSum value: (covidDataFrance column: 'cases').
+cumulativeDeaths := cumulativeSum value: (covidDataFrance column: 'deaths').
+
+covidDataFrance addColumn: cumulativeCases named: 'cumulativeCases'.
+covidDataFrance addColumn: cumulativeDeaths named: 'cumulativeDeaths'.
+```
+
