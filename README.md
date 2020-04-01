@@ -15,14 +15,28 @@ Metacello new
 
 ## How to use it?
 
-Here are some examples of downloading the latest data and loading it as a cleaned DataFrame (data source: https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide):
+First create an instance of `CovidDataLoader`. This class will help you download the latest data from the Internet, clean it and load it into your image as a [DataFrame](https://github.com/PolyMathOrg/DataFrame) object.
 
 ```Smalltalk
 dataLoader := CovidDataLoader new.
+```
+
+Use the following method to download the latest data. It may take a couple of seconds. The result will be stored as a CSV inside a `data/` folder of this repository.
+
+```Smalltalk
 dataLoader downloadLatestData.
+```
+
+Now you can read the downloaded data from a CSV. This method will automatically clean and parse the values of a dataset:
+
+```Smalltalk
 covidData := dataLoader loadData.
 ```
 
+The result will be a data frame that looks like this:
+
 ![DataFrame of COVID-19 data](img/covidData.png)
+
+
 
 ![DataFrame of COVID-19 data for France](img/covidDataFrance.png)
