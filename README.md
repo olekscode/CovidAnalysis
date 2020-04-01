@@ -54,6 +54,8 @@ populationOfFrance := (covidDataFrance column: 'population') anyOne.
 covidDataFrance removeColumns: #(country population).
 ```
 
+We get the following data frame:
+
 ![DataFrame of COVID-19 data for France](img/covidDataFrance.png)
 
 Let's add two more columns: cumulative sum of cases and deaths. Cumulative sum tells us the total number of cases reported until the given date. For example, if there were 5 cases reported on Monday, no cases on Tuesday, and 12 cases on Wednesday, then the cumulative sum for those days will be 5 for Monday, 5 for Tuesday (5 + 0), and 17 for Wednesday (5 + 0 + 12).
@@ -72,3 +74,6 @@ covidDataFrance addColumn: cumulativeCases named: 'cumulativeCases'.
 covidDataFrance addColumn: cumulativeDeaths named: 'cumulativeDeaths'.
 ```
 
+Now `covidDataFrance` data frame looks like this: 
+
+![DataFrame of COVID-19 data for France with cumulative cases and deaths](img/covidDataFranceCumulative.png)
